@@ -22,6 +22,7 @@ Feature: Self-Assessment
 		And there are "Entender conceitos de requisitos", "Especificar requisitos com qualidade", and "Entender conceitos de gerência de configuração" goals to be self-assess
 		When "Pedro" submits his self-assessment with concept "MA" for goals "Entender conceitos de requisitos", and "Especificar requisitos com qualidade"
 		Then the self-assessment isn’t stored by the system
+		And an e-mail detailing the occurrence is sent to "Pedro"
 
 	Scenario: Submit Self-Assessment (GUI)
 		Given that the student "Pedro" hasn’t submitted his self-assessment yet, there are "Entender conceitos de requisitos", "Especificar requisitos com qualidade", and "Entender conceitos de gerência de configuração" goals to be self-assess
