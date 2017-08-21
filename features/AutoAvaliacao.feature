@@ -28,3 +28,11 @@ Feature: Self-Assessment
 		And he is at "Self-Assessment Page"
 		When "Pedro" assesses the goals "Entender conceitos de requisitos", and "Especificar requisitos com qualidade" with concept "MA"
 		Then "Pedro" sees an error message
+
+	Scenario: No Discrepancies
+		Given that the student "Pedro" hasn’t submitted his self-assessment yet
+		And there are "Entender conceitos de requisitos", "Especificar requisitos com qualidade", and "Entender conceitos de gerência de configuração" goals to be self-assess
+		And professor "Paulo" has assessed student "Pedro" with concept "MA" for goals "Entender conceitos de requisitos", "Especificar requisitos com qualidade", and "Entender conceitos de gerência de configuração"
+		When "Pedro" submits his self-assessment with concept "MANA" for goals "Entender conceitos de requisitos", "Especificar requisitos com qualidade", and "Entender conceitos de gerência de configuração"
+		Then the self-assessment is successfully stored by the system
+		And the system detects no discrepancies
