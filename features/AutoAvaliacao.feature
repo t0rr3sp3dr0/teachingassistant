@@ -43,5 +43,5 @@ Feature: Self-Assessment
 		And there are "Entender conceitos de requisitos", "Especificar requisitos com qualidade", and "Entender conceitos de gerência de configuração" goals to be self-assess
 		And professor "Paulo" has assessed student "Pedro" with concept "MANA" for goals "Entender conceitos de requisitos", "Especificar requisitos com qualidade", and "Entender conceitos de gerência de configuração"
 		When "Pedro" submits his self-assessment with concept "MA" for goals "Entender conceitos de requisitos", "Especificar requisitos com qualidade", and "Entender conceitos de gerência de configuração"
-		Then the self-assessment is successfully stored by the system
+		Then self-assessment is successfully stored by the system
 		And the system detects discrepancies
