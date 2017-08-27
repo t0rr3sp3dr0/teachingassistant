@@ -45,3 +45,4 @@ Feature: Self-Assessment
 		When "Pedro" submits his self-assessment with concept "MA" for goals "Entender conceitos de requisitos", "Especificar requisitos com qualidade", and "Entender conceitos de gerência de configuração"
 		Then the self-assessment is successfully stored by the system
 		And the system detects discrepancies
+		And the system notifies professor "Paulo"
