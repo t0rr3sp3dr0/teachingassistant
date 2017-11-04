@@ -1,5 +1,5 @@
 import { defineSupportCode } from 'cucumber';
-import { TaGuiPage } from './alunos.po';
+import { StudentsPage } from './alunos.po';
 
 defineSupportCode(({ Given, When, Then }) => {
   const chai = require('chai');
@@ -8,11 +8,11 @@ defineSupportCode(({ Given, When, Then }) => {
   chai.should();
   const expect = chai.expect;
 
-  const page = new TaGuiPage();
+  const page = new StudentsPage();
 
   Given(/^I am at the students page$/, () => {
     page.navigateTo();
-    expect(page.getTitle()).to.eventually.equal('Teaching Assistant');
+    expect(page.getTitle()).to.eventually.equal('TaGui');
     page.getAlunosLink().click();
   });
 

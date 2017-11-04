@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class TaGuiPage {
+export class StudentsPage {
   public navigateTo() {
     return browser.get('/');
   }
@@ -17,16 +17,8 @@ export class TaGuiPage {
     return element.all(by.className('alunoRow'));
   }
 
-  public getAlunosNomes() {
-    return element.all(by.className('nomeValue'));
-  }
-
   public getAlunosCPFs() {
     return element.all(by.className('cpfValue'));
-  }
-
-  public getAlunosEmails() {
-    return element.all(by.className('emailValue'));
   }
 
   public getAlunoNome(el) {
@@ -37,20 +29,12 @@ export class TaGuiPage {
     return el.element(by.className('cpfValue')).getText();
   }
 
-  public getAlunoEmail(el) {
-    return el.element(by.className('emailValue')).getText();
-  }
-
   public getNomeInput() {
     return element(by.id('nomeInput'));
   }
 
   public getCPFInput() {
     return element(by.id('cpfInput'));
-  }
-
-  public getEmailInput() {
-    return element(by.id('emailInput'));
   }
 
   public getAdicionarButton() {

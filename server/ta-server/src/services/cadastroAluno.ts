@@ -11,6 +11,30 @@ export class CadastroAluno {
         return this._alunos;
     }
 
+    private static toNumber(value: string): number {
+        switch (value) {
+            case "MA":
+                return 10;
+            case "MPA":
+                return 7;
+            case "MANA":
+                return 5;
+            default:
+                return -1;
+        }
+    }
+
+    private static toString(value: string): string {
+        switch (value) {
+            case "requisitos":
+                return "Requisitos";
+            case "gerDeConfiguracao":
+                return "Gerência de Configuração";
+            default:
+                return value;
+        }
+    }
+
     public cadastrar(aluno: Aluno): boolean {
         if (!this.findByCpf(aluno.cpf)) {
             const e = new Aluno();
@@ -26,6 +50,16 @@ export class CadastroAluno {
         const e = this.findByCpf(aluno.cpf);
         if (e) {
             e.copyFrom(aluno);
+
+            e.discrepancias = [];
+            for (const key in aluno.autoAvaliacao) {
+                if (e.metas[key] && e.autoAvaliacao[key]) {
+                    if (CadastroAluno.toNumber(e.autoAvaliacao[key]) > CadastroAluno.toNumber(e.metas[key])) {
+                        e.discrepancias.push(CadastroAluno.toString(key));
+                    }
+                }
+            }
+
             return true;
         }
 

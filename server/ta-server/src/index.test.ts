@@ -1,6 +1,7 @@
 import * as http from 'http';
 import * as request from 'request-promise';
 import { port, server } from './';
+import { Aluno } from './models/Aluno';
 
 const base_url = `http://localhost:${port}`;
 
@@ -26,12 +27,11 @@ describe('O servidor', () => {
         const options = {
             method: 'POST',
             uri: base_url + '/aluno',
-            body: {
-                name: 'Mari',
-                cpf: '962',
-            },
+            body: new Aluno(),
             json: true,
         };
+        options.body.nome = 'Mari';
+        options.body.cpf = '962';
         return request(options)
             .then((body) => expect(body).toEqual({
                 failure: 'O aluno não pode ser cadastrado',
@@ -43,12 +43,11 @@ describe('O servidor', () => {
         const options = {
             method: 'POST',
             uri: base_url + '/aluno',
-            body: {
-                name: 'Mari',
-                cpf: '965',
-            },
+            body: new Aluno(),
             json: true,
         };
+        options.body.nome = 'Mari';
+        options.body.cpf = '965';
         return request.post(options)
             .then((body) => {
                 expect(body).toEqual({
@@ -58,12 +57,11 @@ describe('O servidor', () => {
                 const options = {
                     method: 'POST',
                     uri: base_url + '/aluno',
-                    body: {
-                        name: 'Pedro',
-                        cpf: '965',
-                    },
+                    body: new Aluno(),
                     json: true,
                 };
+                options.body.nome = 'Pedro';
+                options.body.cpf = '965';
                 return request.post(options)
                     .then((body) => {
                         expect(body).toEqual({

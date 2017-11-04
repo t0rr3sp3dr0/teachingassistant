@@ -24,6 +24,12 @@ export class AlunoService {
   }
 
   public atualizar(aluno: Aluno): Promise<Aluno> {
+    for (const key in aluno.autoAvaliacao) {
+      if (!['MA', 'MPA', 'MANA'].find(value => value === aluno.autoAvaliacao[key])) {
+        aluno.autoAvaliacao[key] = '';
+      }
+    }
+
     return this.http.put(this.baseURL + '/aluno', JSON.stringify(aluno), this.options)
       .toPromise()
       .then(value => value.json().success ? aluno : null)

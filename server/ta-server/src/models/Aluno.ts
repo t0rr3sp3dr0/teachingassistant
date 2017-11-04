@@ -3,6 +3,8 @@ export class Aluno {
     private _cpf: string;
     private _email: string;
     private _metas: Map<string, string>;
+    private _autoAvaliacao: Map<string, string>;
+    private _discrepancias: string[];
 
     public constructor() {
         this.clean();
@@ -40,6 +42,30 @@ export class Aluno {
         this._metas = value;
     }
 
+    get autoAvaliacao(): Map<string, string> {
+        return this._autoAvaliacao;
+    }
+
+    set autoAvaliacao(value: Map<string, string>) {
+        this._autoAvaliacao = value;
+    }
+
+    get discrepancias(): string[] {
+        return this._discrepancias;
+    }
+
+    set discrepancias(value: string[]) {
+        this._discrepancias = value;
+    }
+
+    public static cloneMap(from: Map<string, string>): Map<string, string> {
+        const to: Map<string, string> = new Map<string, string>();
+        for (const key in from) {
+            to[key] = from[key];
+        }
+        return to;
+    }
+
     public clone(): Aluno {
         const aluno = new Aluno();
         aluno.metas = new Map<string, string>();
@@ -51,14 +77,9 @@ export class Aluno {
         this.nome = from.nome;
         this.cpf = from.cpf;
         this.email = from.email;
-        this.copyMetasFrom(from.metas);
-    }
-
-    public copyMetasFrom(from: Map<string, string>): void {
-        this.metas = new Map<string, string>();
-        for (const key in from) {
-            (this.metas as any)[key] = (from as any)[key];
-        }
+        this.metas = Aluno.cloneMap(from.metas);
+        this.autoAvaliacao = Aluno.cloneMap(from.autoAvaliacao);
+        this.discrepancias = from.discrepancias.slice();
     }
 
     private clean(): void {
@@ -66,6 +87,8 @@ export class Aluno {
         this.cpf = '';
         this.email = '';
         this.metas = new Map<string, string>();
+        this.autoAvaliacao = new Map<string, string>();
+        this.discrepancias = [];
     }
 
     public toJSON() {
@@ -74,6 +97,8 @@ export class Aluno {
             cpf: this.cpf,
             email: this.email,
             metas: this.metas,
+            autoAvaliacao: this.autoAvaliacao,
+            discrepancias: this.discrepancias,
         };
     }
 }

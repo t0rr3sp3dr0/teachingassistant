@@ -11,10 +11,10 @@
     <td class="cpfValue">{{a.cpf}}</td>
     <td class="emailValue">{{a.email}}</td>
     <td class="meta">
-      <input id="{{a.nome}}G0" [(ngModel)]="a.metas['requisitos']" (change)="atualizarAluno(a)">
+      <input id="{{a.nome}}G0" [(ngModel)]="a.autoAvaliacao['requisitos']" (change)="atualizarAluno(a)">
     </td>
     <td class="meta">
-      <input id="{{a.nome}}G1" [(ngModel)]="a.metas['gerDeConfiguracao']" (change)="atualizarAluno(a)">
+      <input id="{{a.nome}}G1" [(ngModel)]="a.autoAvaliacao['gerDeConfiguracao']" (change)="atualizarAluno(a)">
     </td>
   </tr>
 </table>

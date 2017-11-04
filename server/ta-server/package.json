@@ -4,7 +4,7 @@
   "description": "Servidor do teaching assistant",
   "main": "ta-server.js",
   "scripts": {
-    "start": "rm -fR dist && tsc && node dist/index.js",
+    "start": "rm -fR dist && tsc && node dist/out-tsc",
     "test": "rm -fR dist && tsc && jest"
   },
   "author": "Paulo Borba",
@@ -19,6 +19,7 @@
     "@types/jest": "^21.1.5",
     "@types/request": "^2.0.7",
     "@types/request-promise": "^4.1.39",
+    "codelyzer": "^4.0.1",
     "jest": "^21.2.1",
     "request": "^2.34",
     "request-promise": "^4.2.2"
