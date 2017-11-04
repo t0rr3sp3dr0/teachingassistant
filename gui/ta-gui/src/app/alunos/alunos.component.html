@@ -1,21 +1,21 @@
 <table>
   <tr>
     <td>
-      <label for="nome">Nome</label>
+      <label for="nomeInput">Nome</label>
     </td>
     <td>
-      <input id="nome" [(ngModel)]="aluno.nome">
+      <input id="nomeInput" [(ngModel)]="aluno.nome">
     </td>
     <td>
-      <button (click)="criarAluno(aluno)">Adicionar</button>
+      <button id="adicionarButton" (click)="criarAluno(aluno)">Adicionar</button>
     </td>
   </tr>
   <tr>
     <td>
-      <label for="cpf">CPF</label>
+      <label for="cpfInput">CPF</label>
     </td>
     <td>
-      <input id="cpf" [(ngModel)]="aluno.cpf">
+      <input id="cpfInput" [(ngModel)]="aluno.cpf">
     </td>
     <td *ngIf="cpfDuplicado">
       Já existe um aluno com esse CPF
@@ -23,10 +23,10 @@
   </tr>
   <tr>
     <td>
-      <label for="email">e-mail</label>
+      <label for="emailInput">e-mail</label>
     </td>
     <td>
-      <input id="email" [(ngModel)]="aluno.email">
+      <input id="emailInput" [(ngModel)]="aluno.email">
     </td>
   </tr>
 </table>
@@ -37,9 +37,9 @@
     <th>CPF</th>
     <th>e-mail</th>
   </tr>
-  <tr *ngFor="let a of alunos" name="alunolist">
-    <td name="nomelist">{{a.nome}}</td>
-    <td name="cpflist">{{a.cpf}}</td>
-    <td>{{a.email}}</td>
+  <tr *ngFor="let a of alunos" class="alunoRow">
+    <td class="nomeValue">{{a.nome}}</td>
+    <td class="cpfValue">{{a.cpf}}</td>
+    <td class="emailValue">{{a.email}}</td>
   </tr>
 </table>
